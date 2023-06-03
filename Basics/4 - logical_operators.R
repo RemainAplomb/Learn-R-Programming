@@ -1,4 +1,7 @@
+#===============================================================
+
 # Logical Operators
+
 #   - And &
 #   - Or |
 #   - Less than <
@@ -9,22 +12,33 @@
 #   - Not Equal !=
 #   - Not !
 
+#===============================================================
+
 ## Example 1:
 n1 <- 20
 n2 <- 30
 
+#===============================================================
+
 ### Is it equal?
 n1 == n2
+
+#===============================================================
 
 ### Is it not equal?
 n1 != n2
 
+#===============================================================
+
 ### Is n1 greater than n2?
 n1 > n2
+
+#===============================================================
 
 ### Is n1 less than n2?
 n1 < n2
 
+#===============================================================
 
 ## Example 2:
 array1 <- c(1:10)
@@ -37,6 +51,8 @@ x1 <- array1[ (array1 > 8) | (array1 < 5)]
 x1
 typeof(x1)
 
+#===============================================================
+
 ## Example 3:
 array2 <- c(1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5)
 array2
@@ -47,6 +63,7 @@ x2 <- array2[ (array2 > 2) & (floor(array2) == array2)]
 x2
 typeof(x2)
 
+#===============================================================
 
 ## Summary for Example 2 and 3:
 ## In R, the square brackets [ ] are used for subsetting or 
@@ -55,3 +72,5 @@ typeof(x2)
 ## for subsetting is object[condition], where object represents 
 ## the data structure from which you want to extract elements, 
 ## and condition specifies the criteria for selecting the elements.
+
+#===============================================================
