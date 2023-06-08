@@ -1,6 +1,8 @@
 #===============================================================
 
 # Matrix
+# In matrix, we have a two-dimensional collection of
+# data elements
 
 #===============================================================
 
@@ -142,5 +144,100 @@ print(sample_matrix9_average)
 
 sample_matrix10 <- cbind(sample_matrix9, sample_matrix9_average)
 print(sample_matrix10)
+
+#===============================================================
+
+## Selection and Indexing
+sales_vector <- c(15,30,NA,25,50,35,70,40,80,11,33,27,23,19,NA,38)
+sales_matrix <- matrix( sales_vector, nrow = 4, ncol = 4, byrow = T)
+print(sales_matrix)
+
+## Add dimension names
+col_names <- c( "Shop1", "Shop2", "Shop3", "Shop4")
+row_names <- c( "Chips", "Burgers", "Ice Cream", "Spaghetti")
+dimnames(sales_matrix)<- list(col_names, row_names)
+print(sales_matrix)
+
+#===============================================================
+
+## Extract Sales (in columns)
+## {matrix_name}[ {row}, {column}]
+sales_matrix_subset1 <- sales_matrix[,1]
+print(sales_matrix_subset1)
+
+sales_matrix_subset2 <- sales_matrix[,1:2]
+print(sales_matrix_subset1)
+
+sales_matrix_subset3 <- sales_matrix[,c(1,3)]
+print(sales_matrix_subset1)
+
+#===============================================================
+
+## Extract Sales (in rows)
+## {matrix_name}[ {row}, {column}]
+sales_matrix_subset4 <- sales_matrix[1,]
+print(sales_matrix_subset4)
+
+sales_matrix_subset5 <- sales_matrix[1,]
+print(sales_matrix_subset5)
+
+sales_matrix_subset6 <- sales_matrix[1:2,]
+print(sales_matrix_subset6)
+
+sales_matrix_subset7 <- sales_matrix[c(1,3),]
+print(sales_matrix_subset7)
+
+sales_matrix_subset8 <- sales_matrix[2,2]
+print(sales_matrix_subset8)
+
+sales_matrix_subset9 <- sales_matrix[2,2:4]
+print(sales_matrix_subset9)
+
+#===============================================================
+
+## Extract sales (in rows and columns)
+## {matrix_name}[ {row}, {column}]
+sales_matrix_subset10 <- sales_matrix[3:4,2:3]
+print(sales_matrix_subset10)
+
+sales_matrix_subset11 <- sales_matrix[2:4,c(1,4)]
+print(sales_matrix_subset11)
+
+#===============================================================
+
+## Get the sales of shop1 in burgers and spaghetti
+shop1_sales <- sales_matrix["Shop1", c(2, 4)]
+print(shop1_sales)
+
+## Get ice cream sales of shop3 and shop4
+icecream_sales <- sales_matrix[c("Shop3", "Shop4"), 3]
+print(icecream_sales)
+
+## Find the average sales of shop4
+shop4_avg_sales <- mean(sales_matrix[c("Shop4"),], na.rm = T)
+print(shop4_avg_sales)
+
+#===============================================================
+
+## Find the average sales of all shops, and append it into sales
+## apply( {matrix_variable}, {1/2}, {operation}, {remove null})
+shops_avg_sales <- apply(sales_matrix, 1, mean, na.rm = T)
+print(shops_avg_sales)
+
+add_avg_sales <- cbind( sales_matrix, shops_avg_sales)
+print(add_avg_sales)
+
+#===============================================================
+
+## Check whether the shop has met its average sales target
+sales_targets <- c( 30, 30, 30, 30)
+
+met_sales_target <- ( add_avg_sales[,c("shops_avg_sales")] > sales_targets)
+print(met_sales_target)
+sum(met_sales_target, na.rm = T)
+print(met_sales_target)
+
+add_met_sales_target <- cbind( add_avg_sales, met_sales_target)
+print(add_met_sales_target)
 
 #===============================================================
